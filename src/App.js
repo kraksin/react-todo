@@ -23,6 +23,25 @@ function App() {
     }
   }
 
+  const removeTodo = (id) => {
+    const newTodo = todos.filter(item => item.id !== id);
+    sestTodos(newTodo);
+  }
+
+  const toggleTodo = (id) => {
+    const index = todos.findIndex(item => item.id === id);
+    const selected = todos[index];
+
+    const newTodos = [...todos];
+
+    newTodos[index] = {
+      ...selected,
+      checked: !selected.checked
+    };
+
+    sestTodos(newTodos);
+  }
+
   return (
     <div>
       <TodoTemplate 
@@ -35,7 +54,7 @@ function App() {
           />
         }
       >
-        <TodoList todos={todos}/>
+        <TodoList todos={todos} onToggle={toggleTodo} onRemove={removeTodo} />
       </TodoTemplate>
     </div>
   );
