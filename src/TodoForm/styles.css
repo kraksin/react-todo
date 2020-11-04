@@ -1,0 +1,23 @@
+.form {
+  display: flex;
+}
+
+.form input {
+  flex: 1;
+  font-size: 1.1rem;
+  outline: none;
+  border: none;
+  font-weight: 300;
+}
+
+.insert-btn {
+  margin-left: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  background: #a5d8ff;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
