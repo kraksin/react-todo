@@ -26,3 +26,7 @@ You will also see any lint errors in the console.
 
 * uuid
 * gh-pages
+
+### Todos
+
+* Add Color Palette
