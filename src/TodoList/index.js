@@ -4,9 +4,7 @@ import TodoItem from './TodoItem';
 const TodoList = ({ todos, onToggle, onRemove }) => {
   return (
     <div>
-      <TodoItem text="test" checked />
-      <TodoItem text="test" checked />
-      <TodoItem text="test" />
+      {todos.map(({ id, text, checked }) => <TodoItem key={id} id={id} text={text} checked={checked} />)}
     </div>
   )
 }
