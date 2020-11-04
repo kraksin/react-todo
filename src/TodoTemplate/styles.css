@@ -1,0 +1,26 @@
+.template-container {
+  background: white;
+  margin: 0 auto;
+  width: 512px;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.title {
+  padding: 2rem;
+  font-size: 2.5rem;
+  font-weight: 100;
+  color: white;
+  text-align: center;
+  background: #a5d8ff;
+}
+
+.form-wrapper {
+  padding: 1rem;
+  border-bottom: 1px solid #a5d8ff;
+}
+
+.todos-wrapper {
+  min-height: 5rem;
+}
