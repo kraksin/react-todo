@@ -2,6 +2,7 @@ import React from 'react';
 import TodoItem from './TodoItem';
 
 const TodoList = ({ todos, onToggle, onRemove }) => {
+
   return (
     <div>
       {todos.map(({ id, text, checked }) => 
@@ -18,4 +19,6 @@ const TodoList = ({ todos, onToggle, onRemove }) => {
   )
 }
 
-export default TodoList;
+export default React.memo(TodoList, (prevProps, nextProps) => {
+  return nextProps.todos === prevProps.todos;
+});

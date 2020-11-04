@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import TodoTemplate from './TodoTemplate';
 import TodoForm from './TodoForm';
@@ -7,40 +7,34 @@ import './styles.css';
 
 function App() {
   const [input, setInput] = useState('');
-  const [todos, sestTodos] = useState([]);
+  const [todos, setTodos] = useState([]);
 
   const insertTodo = () => {
-    const newId = uuidv4();
-    
-    const newTodos = [...todos, { id: newId, text: input, checked: false }];
-    sestTodos(newTodos);
+    if (input === '') return;
+  
+    setTodos(todos => [...todos, { id: uuidv4(), text: input, checked: false }]);
     setInput('');
-  }
+  };
 
   const keyPressEnterTodo = (e) => {
+    if (input === '') return;
+
     if (e.key === 'Enter') {
       insertTodo();
     }
   }
 
-  const removeTodo = (id) => {
-    const newTodo = todos.filter(item => item.id !== id);
-    sestTodos(newTodo);
-  }
+  const removeTodo = useCallback((id) => 
+    setTodos(todos => todos.filter(item => item.id !== id))
+  , []);
 
-  const toggleTodo = (id) => {
-    const index = todos.findIndex(item => item.id === id);
-    const selected = todos[index];
-
-    const newTodos = [...todos];
-
-    newTodos[index] = {
-      ...selected,
-      checked: !selected.checked
-    };
-
-    sestTodos(newTodos);
-  }
+  const toggleTodo = useCallback((id) => {
+    setTodos(todos => 
+      todos.map(todo => 
+        todo.id === id ? { ...todo, checked: !todo.checked } : todo
+      )
+    );
+  }, []);
 
   return (
     <div>

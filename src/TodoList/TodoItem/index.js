@@ -2,7 +2,7 @@ import React from 'react';
 import './styles.css';
 
 const TodoItem = ({ id, text, checked, onRemove, onToggle }) => {
-  
+
   const remove = (e) => {
     e.stopPropagation();
     onRemove(id);
@@ -21,4 +21,7 @@ const TodoItem = ({ id, text, checked, onRemove, onToggle }) => {
   )
 }
 
-export default TodoItem;
+export default React.memo(TodoItem, (prevProps, nextProps) => {
+  return nextProps.checked === prevProps.checked;
+});
+

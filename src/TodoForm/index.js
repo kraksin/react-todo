@@ -3,8 +3,6 @@ import './styles.css';
 
 const TodoForm = ({ value, onChange, onInsert, onKeyPress }) => {
   
-
-
   return (
     <div className='form'>
       <input 
